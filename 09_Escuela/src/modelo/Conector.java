@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conector {
-	protected Connection conexion;
+	public static Connection conexion;
 
 	Conector() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			this.conexion = DriverManager.getConnection("jdbc:mysql://" + Config.HOST + "/" + Config.BBDD,
+			Conector.conexion = DriverManager.getConnection("jdbc:mysql://" + Config.HOST + "/" + Config.BBDD,
 					Config.USERNAME, Config.PASSWORD);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -24,6 +24,6 @@ public class Conector {
 	}
 
 	public void setConexion(Connection conexion) {
-		this.conexion = conexion;
+		Conector.conexion = conexion;
 	}
 }

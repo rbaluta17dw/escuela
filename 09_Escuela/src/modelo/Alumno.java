@@ -1,10 +1,13 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Alumno {
 	private int id;
 	private String dni;
 	private String nombre;
 	private String email;
+	private ArrayList<Matricula> matriculas;
 
 	public Alumno(int id, String dni, String nombre, String email) {
 		this.id = id;
@@ -48,6 +51,13 @@ public class Alumno {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
+	public ArrayList<Matricula> getMatriculas() {
+		return matriculas;
+	}
+
+	public void setMatriculas(ArrayList<Matricula> matriculas) {
+		this.matriculas = matriculas;
+	}
+
 }

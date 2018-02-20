@@ -3,13 +3,13 @@ package modelo;
 import java.util.Date;
 
 public class Matricula {
-	private int id_alumno;
-	private int id_asignatura;
+	private Alumno alumno; // id_alumno
+	private Asignatura asignatura; // id_asignatura
 	private Date fecha;
 
-	public Matricula(int id_alumno, int id_asignatura, Date fecha) {
-		this.id_alumno = id_alumno;
-		this.id_asignatura = id_asignatura;
+	public Matricula(Alumno alumno, Asignatura asignatura, Date fecha) {
+		this.alumno = alumno;
+		this.asignatura = asignatura;
 		this.fecha = fecha;
 	}
 
@@ -17,20 +17,20 @@ public class Matricula {
 
 	}
 
-	public int getId_alumno() {
-		return id_alumno;
+	public Alumno getAlumno() {
+		return alumno;
 	}
 
-	public void setId_alumno(int id_alumno) {
-		this.id_alumno = id_alumno;
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
 	}
 
-	public int getId_asignatura() {
-		return id_asignatura;
+	public Asignatura getAsignatura() {
+		return asignatura;
 	}
 
-	public void setId_asignatura(int id_asignatura) {
-		this.id_asignatura = id_asignatura;
+	public void setAsignatura(Asignatura asignatura) {
+		this.asignatura = asignatura;
 	}
 
 	public Date getFecha() {
