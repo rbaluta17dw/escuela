@@ -32,14 +32,15 @@ public class ModeloUsuario extends Conector {
 		return listaUsuarios;
 	}
 
-	public Usuario select(int id) {
+	public static Usuario select(int id) {
 		// crear usuario
 		Usuario usuario = new Usuario();
 
 		// ejecutar consulta
 		try {
 			Statement st = conexion.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM usuarios WHERE id =" + id);
+			ResultSet rs = st.executeQuery("SELECT * FROM usuarios WHERE id = ('" + id +"') ");
+			rs.next();
 			usuario.setId(rs.getInt("id"));
 			usuario.setNombre(rs.getString("nombre"));
 			usuario.setApellido(rs.getString("apellido"));

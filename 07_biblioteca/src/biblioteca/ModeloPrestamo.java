@@ -12,8 +12,8 @@ public class ModeloPrestamo extends Conector {
 		try {
 			PreparedStatement pst = super.conexion.prepareStatement(
 					"INSERT INTO prestamo (id_libro, id_usuario, fecha_prestamo, fecha_limite, entregado) values (?,?,?,?,?)");
-			pst.setInt(1, prestamo.getIdLibro());
-			pst.setInt(2, prestamo.getIdUsuario());
+			pst.setInt(1, prestamo.getLibro().getId());
+			pst.setInt(2, prestamo.getUsuario().getId());
 			pst.setDate(3, dateToSql(prestamo.getFechaPrestamo()));
 			pst.setDate(4, dateToSql(prestamo.getFechaLimite()));
 			pst.setBoolean(5, prestamo.isEntregado());
@@ -26,8 +26,7 @@ public class ModeloPrestamo extends Conector {
 
 	public void update(Prestamo prestamo) {
 		try {
-			PreparedStatement pst = super.conexion.prepareStatement(
-					"UPDATE prestamo SET entregado = 1 WHERE id = ?");
+			PreparedStatement pst = super.conexion.prepareStatement("UPDATE prestamo SET entregado = 1 WHERE id = ?");
 			pst.setInt(1, prestamo.getId());
 			pst.execute();
 
@@ -55,8 +54,13 @@ public class ModeloPrestamo extends Conector {
 			Statement st = conexion.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM prestamo");
 			while (rs.next()) {
-				Prestamo p = new Prestamo(rs.getInt("id"), rs.getInt("id_libro"), rs.getInt("id_usuario"),
-						rs.getDate("fecha_prestamo"), rs.getDate("fecha_limite"), rs.getBoolean("entregado"));
+				Prestamo p = new Prestamo();
+				p.setId(rs.getInt("id"));
+				p.setUsuario(ModeloUsuario.select(rs.getInt("id_usuario")));
+				p.setLibro(ModeloLibro.selectId(rs.getInt("id_libro")));
+				p.setFechaPrestamo(rs.getDate("fecha_prestamo"));
+				p.setFechaLimite(rs.getDate("fecha_limite"));
+				p.setEntregado(rs.getBoolean("entregado"));
 				listaPrestamos.add(p);
 			}
 		} catch (SQLException e) {
@@ -74,8 +78,15 @@ public class ModeloPrestamo extends Conector {
 			ResultSet rs = st.executeQuery("SELECT * FROM prestamo WHERE id_usuario = ('" + idUsuario
 					+ "') AND id_libro = ('" + idLibro + "')");
 			rs.next();
-			prestamo = new Prestamo(rs.getInt("id"), rs.getInt("id_usuario"), rs.getInt("id_libro"),
-					rs.getDate("fecha_prestamo"), rs.getDate("fecha_limite"), rs.getBoolean("entregado"));
+			prestamo = new Prestamo();
+			prestamo.setId(rs.getInt("id"));
+			prestamo.setUsuario(ModeloUsuario.select(rs.getInt("id_libro")));
+			prestamo.setLibro(ModeloLibro.selectId(rs.getInt("id_libro")));
+			prestamo.setFechaPrestamo(rs.getDate("fecha_prestamo"));
+			prestamo.setFechaLimite(rs.getDate("fecha_limite"));
+			prestamo.setEntregado(rs.getBoolean("entregado"));
+			prestamo = new Prestamo();
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

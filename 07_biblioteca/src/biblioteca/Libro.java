@@ -1,20 +1,23 @@
 package biblioteca;
 
+import java.util.ArrayList;
+
 public class Libro {
 	private int id;
 	private String autor;
 	private String titulo;
+	private ArrayList<Prestamo> prestamos;
 
-	public Libro(){
-		
+	public Libro() {
+
 	}
-	
-	public Libro(int id, String autor, String titulo){
+
+	public Libro(int id, String autor, String titulo) {
 		this.id = id;
 		this.autor = autor;
 		this.titulo = titulo;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -37,6 +40,14 @@ public class Libro {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	public ArrayList<Prestamo> getPrestamos() {
+		return prestamos;
+	}
+
+	public void setPrestamos(ArrayList<Prestamo> prestamos) {
+		this.prestamos = prestamos;
 	}
 
 }

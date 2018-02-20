@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class Prestamo {
 	private int id;
-	private int idUsuario;
-	private int idLibro;
+	private Usuario usuario;
+	private Libro libro;
 	private Date fechaPrestamo;
 	private Date fechaLimite;
 	private boolean entregado;
 
-	public Prestamo(int id, int idUsuario, int idLibro, Date fechaPrestamo, Date fechaLimite, boolean entregado) {
-		this.idUsuario = idUsuario;
-		this.idLibro = idLibro;
+	public Prestamo(int id, Usuario usuario, Libro libro, Date fechaPrestamo, Date fechaLimite, boolean entregado) {
+		this.usuario = usuario;
+		this.libro = libro;
 		this.fechaPrestamo = fechaPrestamo;
 		this.fechaLimite = fechaLimite;
 	}
@@ -29,20 +29,20 @@ public class Prestamo {
 		this.id = id;
 	}
 
-	public int getIdUsuario() {
-		return idUsuario;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public int getIdLibro() {
-		return idLibro;
+	public Libro getLibro() {
+		return libro;
 	}
 
-	public void setIdLibro(int idLibro) {
-		this.idLibro = idLibro;
+	public void setLibro(Libro libro) {
+		this.libro = libro;
 	}
 
 	public Date getFechaPrestamo() {

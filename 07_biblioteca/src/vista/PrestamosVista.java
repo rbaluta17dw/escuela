@@ -49,7 +49,6 @@ public class PrestamosVista {
 			}
 
 		} while (opcion != SALIR);
-		scan.close();
 	}
 
 	public void mostrarPrestamos(ArrayList<Prestamo> prestamos) {
@@ -67,19 +66,19 @@ public class PrestamosVista {
 		} else {
 			entregado = "por entregar";
 		}
-		System.out.println("ID: " + prestamo.getId() + "\nIdLibro: " + prestamo.getIdLibro() + "\nIdUsuario: "
-				+ prestamo.getIdUsuario() + "\nFecha Prestamo: " + prestamo.getFechaPrestamo() + "\nFecha Limite: "
-				+ prestamo.getFechaLimite() + "\nEntregado: " + entregado);
+		System.out.println("ID: " + prestamo.getId() + "\nIdLibro: " + prestamo.getLibro().getId() + "\nIdUsuario: "
+				+ prestamo.getUsuario().getId() + "\nFecha Prestamo: " + prestamo.getFechaPrestamo()
+				+ "\nFecha Limite: " + prestamo.getFechaLimite() + "\nEntregado: " + entregado);
 	}
 
 	public Prestamo crearPrestamo() {
 		Libro libro = pedirLibroPorTitulo();
 		if (libro != null) {
 			Prestamo prestamo = new Prestamo();
-			prestamo.setIdLibro(libro.getId());
+			prestamo.setLibro(libro);
 			Usuario usuario = pedirUsuarioPorDni();
 			if (usuario != null) {
-				prestamo.setIdUsuario(usuario.getId());
+				prestamo.setUsuario(usuario);
 				Date fechaPrestamo = new Date();
 				prestamo.setFechaPrestamo(fechaPrestamo);
 				prestamo.setFechaLimite(fechaLimite(fechaPrestamo));

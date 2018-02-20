@@ -1,5 +1,6 @@
 package biblioteca;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Usuario {
@@ -9,6 +10,7 @@ public class Usuario {
 	private int edad;
 	private String dni;
 	private Date fechaNacimineto;
+	private ArrayList<Prestamo> prestamos;
 
 	public Usuario() {
 
@@ -69,6 +71,14 @@ public class Usuario {
 
 	public void setFechaNacimineto(Date fechaNacimineto) {
 		this.fechaNacimineto = fechaNacimineto;
+	}
+
+	public ArrayList<Prestamo> getPrestamos() {
+		return prestamos;
+	}
+
+	public void setPrestamos(ArrayList<Prestamo> prestamos) {
+		this.prestamos = prestamos;
 	}
 
 }

@@ -24,11 +24,12 @@ public class ModeloLibro extends Conector {
 		return listaLibros;
 	}
 
-	public Libro selectId(int id) {
+	public static Libro selectId(int id) {
 		Libro libro = new Libro();
 		try {
 			Statement st = conexion.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM libros WHERE id= " + id);
+			rs.next();
 			libro.setId(rs.getInt("id"));
 			libro.setAutor(rs.getString("autor"));
 			libro.setTitulo(rs.getString("titulo"));
