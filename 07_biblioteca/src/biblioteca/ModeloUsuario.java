@@ -39,15 +39,15 @@ public class ModeloUsuario extends Conector {
 		// ejecutar consulta
 		try {
 			Statement st = conexion.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM usuarios WHERE id = ('" + id +"') ");
-			rs.next();
-			usuario.setId(rs.getInt("id"));
-			usuario.setNombre(rs.getString("nombre"));
-			usuario.setApellido(rs.getString("apellido"));
-			usuario.setEdad(rs.getInt("edad"));
-			usuario.setDni(rs.getString("dni"));
-			usuario.setFechaNacimineto(rs.getDate("FechaNacimiento"));
-
+			ResultSet rs = st.executeQuery("SELECT * FROM usuarios WHERE id= " + id);
+			while(rs.next()){
+				usuario.setId(rs.getInt("id"));
+				usuario.setNombre(rs.getString("nombre"));
+				usuario.setApellido(rs.getString("apellido"));
+				usuario.setEdad(rs.getInt("edad"));
+				usuario.setDni(rs.getString("dni"));
+				usuario.setFechaNacimineto(rs.getDate("FechaNacimiento"));
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

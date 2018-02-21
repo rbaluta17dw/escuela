@@ -66,8 +66,8 @@ public class PrestamosVista {
 		} else {
 			entregado = "por entregar";
 		}
-		System.out.println("ID: " + prestamo.getId() + "\nIdLibro: " + prestamo.getLibro().getId() + "\nIdUsuario: "
-				+ prestamo.getUsuario().getId() + "\nFecha Prestamo: " + prestamo.getFechaPrestamo()
+		System.out.println("ID: " + prestamo.getId() + "\nTitulo : " + prestamo.getLibro().getTitulo() + "\nDNI : "
+				+ prestamo.getUsuario().getDni() + "\nFecha Prestamo: " + prestamo.getFechaPrestamo()
 				+ "\nFecha Limite: " + prestamo.getFechaLimite() + "\nEntregado: " + entregado);
 	}
 
