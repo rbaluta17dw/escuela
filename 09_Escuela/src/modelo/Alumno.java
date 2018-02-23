@@ -8,6 +8,7 @@ public class Alumno {
 	private String nombre;
 	private String email;
 	private ArrayList<Matricula> matriculas;
+	private ArrayList<Asignatura> asiganaturas;
 
 	public Alumno(int id, String dni, String nombre, String email) {
 		this.id = id;
@@ -60,4 +61,11 @@ public class Alumno {
 		this.matriculas = matriculas;
 	}
 
+	public ArrayList<Asignatura> getAsiganaturas() {
+		return asiganaturas;
+	}
+
+	public void setAsiganaturas(ArrayList<Asignatura> asiganaturas) {
+		this.asiganaturas = asiganaturas;
+	}
 }
