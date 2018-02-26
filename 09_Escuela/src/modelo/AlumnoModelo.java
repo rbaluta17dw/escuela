@@ -26,7 +26,7 @@ public class AlumnoModelo extends Conector {
 
 	}
 
-	public static Alumno selectPorId(int id) {
+	public Alumno selectPorId(int id) {
 		Alumno alumno = null;
 
 		try {
@@ -41,4 +41,32 @@ public class AlumnoModelo extends Conector {
 
 		return alumno;
 	}
+
+	public ArrayList<Alumno> selectAllConMatriculas() {
+		ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
+		MatriculaModelo matriculaModelo = new MatriculaModelo();
+
+		try {
+			Statement st = super.conexion.createStatement();
+			ResultSet rs = st.executeQuery("select * from alumnos");
+			while (rs.next()) {
+				Alumno alumno = new Alumno();
+				alumno.setId(rs.getInt("id"));
+				alumno.setDni(rs.getString("dni"));
+				alumno.setNombre(rs.getString("nombre"));
+				alumno.setEmail("email");
+				ArrayList<Matricula> matriculas = matriculaModelo.getMatriculasConAsignatura(alumno);
+				alumno.setMatriculas(matriculas);
+
+				alumnos.add(alumno);
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return alumnos;
+	}
+
 }

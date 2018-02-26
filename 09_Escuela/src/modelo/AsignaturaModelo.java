@@ -25,7 +25,7 @@ public class AsignaturaModelo extends Conector {
 
 	}
 
-	public static Asignatura selectPorId(int id) {
+	public Asignatura selectPorId(int id) {
 		Asignatura asignatura = null;
 
 		try {
